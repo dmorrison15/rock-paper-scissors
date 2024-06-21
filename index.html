@@ -6,6 +6,21 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <script>
+        function getHumanChoice() {
+            let choices = ["rock", "paper", "scissors"];
+            let choice = prompt("Do you choose rock, paper or scissors?").toLowerCase();
+            while (true) {
+                if (!choices.includes(choice)) {
+                    choice = prompt("Invalid choice - please try again.");
+                }
+                else {
+                    return choice;
+                }
+            }
+        }
+
+    </script>
     
 </body>
 </html>
