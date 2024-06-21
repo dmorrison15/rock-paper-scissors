@@ -31,8 +31,43 @@
             }
         }
 
-        console.log(getComputerChoice());
+        function playRound(humanChoice, computerChoice) {
+            console.log("computer chose " + computerChoice)
+            switch (humanChoice) {
+                case "rock":
+                    switch (computerChoice) {
+                        case "rock":
+                            return "You tied - you both chose rock";
+                        case "paper":
+                            return "You lose - paper beats rock :(";
+                        default:
+                            return "You win - rock beats scissors :)";
+                    }
+                case "paper":
+                    switch (computerChoice) {
+                        case "rock": 
+                            return "You win - paper beats rock :)";
+                        case "paper":
+                            return "You tied - you both chose paper";
+                        default:
+                            return "You lose - scissors beats paper :(";
+                    
+                    }
+                default:
+                    switch (computerChoice) {
+                        case "rock":
+                            return "You lose - rock beats scissors :(";
+                        case "paper":
+                            return "You win - scissors beats paper :)";
+                        default:
+                            return "You tied - you both chose scissors";
+                    }
+            }
+        }
 
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(humanSelection, computerSelection));
     </script>
     
 </body>
