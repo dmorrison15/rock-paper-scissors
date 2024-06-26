@@ -9,7 +9,7 @@
     <script>
         function getHumanChoice() {
             let choices = ["rock", "paper", "scissors"];
-            let choice = prompt("Do you choose rock, paper or scissors?").toLowerCase();
+            let choice = (prompt("Do you choose rock, paper or scissors?")).toLowerCase();
             while (true) {
                 if (!choices.includes(choice)) {
                     choice = prompt("Invalid choice - please try again.");
@@ -31,43 +31,79 @@
             }
         }
 
+        // this function will return 1, 2, or 3 - 1 means the player wins, 2 means the player loses, and 3 means it's a tie
         function playRound(humanChoice, computerChoice) {
-            console.log("computer chose " + computerChoice)
+            let result;
+            console.log("you chose " + humanChoice);
+            console.log("computer chose " + computerChoice);
             switch (humanChoice) {
                 case "rock":
                     switch (computerChoice) {
                         case "rock":
-                            return "You tied - you both chose rock";
+                            console.log("You tied - you both chose rock");
+                            break;
                         case "paper":
-                            return "You lose - paper beats rock :(";
+                            console.log("You lose - paper beats rock :(");
+                            result = 2;
+                            break;
                         default:
-                            return "You win - rock beats scissors :)";
+                            console.log("You win - rock beats scissors :)");
+                            result = 1;
                     }
+                break;
                 case "paper":
                     switch (computerChoice) {
                         case "rock": 
-                            return "You win - paper beats rock :)";
+                             console.log("You win - paper beats rock :)");
+                             result = 1;
+                             break;
                         case "paper":
-                            return "You tied - you both chose paper";
+                             console.log("You tied - you both chose paper");
+                             break;
                         default:
-                            return "You lose - scissors beats paper :(";
-                    
+                             console.log("You lose - scissors beats paper :(");
+                             result = 2;
                     }
+                break;
                 default:
                     switch (computerChoice) {
                         case "rock":
-                            return "You lose - rock beats scissors :(";
+                             console.log("You lose - rock beats scissors :(");
+                             result = 2;
+                             break;
                         case "paper":
-                            return "You win - scissors beats paper :)";
+                             console.log("You win - scissors beats paper :)");
+                             result = 1;
+                             break;
                         default:
-                            return "You tied - you both chose scissors";
+                             console.log("You tied - you both chose scissors");
                     }
             }
+            return result;
         }
 
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        console.log(playRound(humanSelection, computerSelection));
+        function playGame() {
+            let humanSelection;
+            let computerSelection;
+            let humanScore = 0;
+            let computerScore = 0;
+            for(i = 0; i < 5; i++) {
+                console.log("Round " + (i + 1));
+                humanSelection = getHumanChoice();
+                computerSelection = getComputerChoice();
+                result = playRound(humanSelection, computerSelection);
+                if (result === 1) {
+                    humanScore++;
+                } else if (result === 2) {
+                    computerScore++;
+                }
+            }
+            console.log("Game over \n Player Score: " + humanScore + "\n Computer Score: " + computerScore);
+        }
+
+        playGame();
+
+        
     </script>
     
 </body>
